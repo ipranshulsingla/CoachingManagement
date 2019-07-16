@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Reset Password</title>
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/reset.css">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div class="topbar">
+                <div class="container flex justify-space-between">
+                    <div class="contact-inf">
+                        <ul class="flex">
+                            <li>
+                                <a href="#">
+                                <span><i class="fas fa-map-marker-alt"></i></span>
+                                <span>Plot No 20, Rohini</span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a href="tel:+919900990099">
+                                        <span><i class="fas fa-phone-alt"></i></span>
+                                        <span>+91 9900990099</span>
+                                    </a>
+                            </li>
+                            <li>
+                                    <a href="mailto:sims@gmail.com">
+                                            <span><i class="fas fa-envelope"></i></span>
+                                            <span>sims@gmail.com</span>
+                                    </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="login">
+                        <a href="index.html#login-box">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="logo-nav">
+                <div class="container flex justify-space-between">
+                    <div class="logo">
+                        <a href="#">SIMS</a>
+                    </div>
+                    <div class="nav-bar">
+                        <ul class="flex">
+                            <li><a href="index.html">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <section>
+        <div>
+            <form action="resetpassword" method="post" autocomplete="off">
+                <input type="text" class="textbox" name="OTP" placeholder="Enter OTP" required><br>
+                <input type="password" class="textbox" name="newpassword" placeholder="Enter new password" required><br>
+                <input type="submit" class="submit">
+            </form>
+        </div>
+    </section>
+    <div id="password-reset-done" class="password-reset">  
+        <div class="inner-wrapper">
+                        <h3>Password successfully changed</h3>
+                        <a href="index.html">Ok! Let's go back to the Home</a>
+        </div>
+    </div>
+    <div id="password-reset-fail" class="password-reset">  
+        <div class="inner-wrapper">
+                        <h3>Incorrect OTP</h3>
+                        <a href="index.html#forget-box">Try Again!</a>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

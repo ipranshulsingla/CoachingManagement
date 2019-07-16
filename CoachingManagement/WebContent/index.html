@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Coaching</title>
+    <link rel="stylesheet" href="stylesheets/main.css">
+    <link rel="stylesheet" href="stylesheets/index.css">
+    <script src="https://kit.fontawesome.com/b06605e970.js"></script>
+</head>
+<body>
+    <div id="container">
+        <header>
+            <div class="topbar">
+                <div class="container flex justify-space-between">
+                    <div class="contact-inf">
+                        <ul class="flex">
+                            <li>
+                                <a href="#">
+                                <span><i class="fas fa-map-marker-alt"></i></span>
+                                <span>Plot No 20, Rohini</span>
+                                </a>
+                            </li>
+                            <li>
+                                    <a href="tel:+919900990099">
+                                        <span><i class="fas fa-phone-alt"></i></span>
+                                        <span>+91 9900990099</span>
+                                    </a>
+                            </li>
+                            <li>
+                                    <a href="mailto:sims@gmail.com">
+                                            <span><i class="fas fa-envelope"></i></span>
+                                            <span>sims@gmail.com</span>
+                                    </a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="login">
+                        <a href="#login-box">Login</a>
+                    </div>
+                </div>
+            </div>
+            <div class="logo-nav">
+                <div class="container flex justify-space-between">
+                    <div class="logo">
+                        <a href="#">SIMS</a>
+                    </div>
+                    <div class="nav-bar">
+                        <ul class="flex">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Courses</a></li>
+                            <li><a href="#">Enquiry</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+    </header>
+    <section>
+        <div id="slider" class="flex">
+            <div class="slide"><img src="images/slider_img_1.jpg" alt=""></div>
+            <div class="slide"><img src="images/slider_img_2.jpg" alt=""></div>
+            <div class="slide"><img src="images/slider_img_3.jpg" alt=""></div>            
+        </div>
+    </section>
+    <footer></footer>
+    <div id="login-box">  
+        <div class="inner-wrapper">
+                <div class="form">
+                        <form action="checklogin" method="post">
+                                <a href="">Close</a>
+                                <input name="email" class="textbox" type="email" placeholder="Enter E-Mail ID" required><br>
+                                <input name="password" class="textbox" type="password" placeholder="Enter Password" required><br>
+                                <input class="submit" type="submit">
+                                <a href="#forget-box">Forget Password?</a>
+                        </form>
+                </div>
+        </div>
+    </div>
+    <div id="forget-box">  
+        <div class="inner-wrapper">
+                <div class="form">
+                        <form action="forgetpassword" method="post">
+                                <a href="#login-box">Close</a>
+                                <input name="email" class="textbox" type="email" placeholder="Enter E-Mail ID" required><br>
+                                <input class="submit" type="submit" value="Send OTP">
+                        </form>
+                </div>
+        </div>
+    </div>
+    <div id="wrong-email">  
+        <div class="inner-wrapper">
+                        <h3>Email doesn't exist...</h3>
+                        <a href="#forget-box">Back</a>
+        </div>
+    </div>
+    <div id="wrong-credentials">  
+        <div class="inner-wrapper">
+                        <h3>Email ID or password is incorrect...</h3>
+                        <a href="#login-box">Back</a>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

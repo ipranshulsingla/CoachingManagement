@@ -1,0 +1,111 @@
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+header .topbar a{
+    color: white;
+    letter-spacing: 1px;
+}
+
+header .topbar{
+    background-color: #1E3953;
+}
+
+header .topbar .logout{
+    padding: 10px;
+}
+
+header .topbar .logout a{
+    border: 1px solid white;
+    padding: 4px;
+    transition: 0.5s;
+}
+
+header .topbar .logout a:hover{
+    background-color: #93C83F;
+}
+
+header .logo-nav a{
+    color: #1E3953;
+}
+
+header .logo-nav .logo a{
+    font-size: 52px;
+    font-weight: bold;
+}
+
+header .logo-nav{
+    background-color: white;
+}
+
+header .logo-nav .nav-bar ul li{
+    padding: 20px;
+    margin-left: 20px; 
+}
+
+header .logo-nav .nav-bar ul li a{
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+header .logo-nav .nav-bar ul li a:hover{
+    color: #93C83F;
+}
+
+header .logo-nav::after{
+    content: "";
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid black;
+}
+
+section .options ul li {
+    width: 18%;
+    margin-bottom: 2%;
+    text-align: center;
+}
+
+section h1 {
+    margin-top: 2%;
+    text-align: start;
+    letter-spacing: 1px;
+}
+
+section .options a:hover span{
+    color: #93C83F;
+}
+
+section .options a span{
+    transition: 0.3s;
+    color: #1E3953;
+    font-weight: bold;
+}
+
+section .header::after{
+    content: "";
+    width: 100%;
+    display: block;
+    border-bottom: 1px solid black;
+}
+
+section .options .icon{
+    width: 50%;
+}
+
+section .options .icon img{
+    width: 100%;
+}
+
+section .student-header .options .icon-2{
+    margin-top: 52%; 
+}
+
+section .student-header .options .icon-3{
+    margin-top: 17%; 
+}
+
+
+
+
+
