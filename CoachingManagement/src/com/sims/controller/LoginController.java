@@ -24,8 +24,7 @@ public class LoginController extends HttpServlet {
 			user = new UserDAO();
 			String name=user.checkLogin(email, password);
 			if(name!=null) {
-				request.setAttribute("name",name);
-				RequestDispatcher rd=request.getRequestDispatcher("dashboard.jsp");
+				RequestDispatcher rd=request.getRequestDispatcher("dashboard.html");
 				rd.forward(request, response);
 			}
 			else {
