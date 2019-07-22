@@ -1,0 +1,64 @@
+.container{
+    width: 80%;
+    margin: 0 auto;
+}
+
+header .topbar a{
+    color: white;
+    letter-spacing: 1px;
+}
+
+header .topbar{
+    background-color: #1E3953;
+}
+
+header .topbar .logout{
+    padding: 10px;
+}
+
+header .topbar .logout a{
+    border: 1px solid white;
+    padding: 4px;
+    transition: 0.5s;
+}
+
+header .topbar .logout a:hover{
+    background-color: #93C83F;
+}
+
+header .logo-nav a{
+    color: #1E3953;
+}
+
+header .logo-nav .logo a{
+    font-size: 52px;
+    font-weight: bold;
+}
+
+header .logo-nav{
+    background-color: white;
+}
+
+header .logo-nav .nav-bar ul li{
+    padding: 20px;
+    margin-left: 20px; 
+}
+
+header .logo-nav .nav-bar ul li a{
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+header .logo-nav .nav-bar ul li a:hover{
+    color: #93C83F;
+}
+
+
+.enq-form{
+    width: 60%;
+}
+
+label,input,select,button{
+    margin: 10px 5px;
+}
+

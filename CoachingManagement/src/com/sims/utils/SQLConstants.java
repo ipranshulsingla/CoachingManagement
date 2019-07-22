@@ -8,4 +8,7 @@ public interface SQLConstants {
 			+ "from enquiry "
 			+ "inner join courses on courses.id=enquiry.course_id "
 			+ "inner join enquiry_status on enquiry.status=enquiry_status.id";
+	String FETCH_COURSES="select * from courses";
+	String FETCH_STATUS="select * from enquiry_status";
+	String INSERT_ENQUIRY="insert into enquiry values(DEFAULT,?,?,?,?,?,?,?,?,?,?)";
 }

@@ -10,7 +10,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Dashboard</title>
+		<title>Enquiry</title>
 		<link rel="stylesheet" href="stylesheets/main.css">
 		<link rel="stylesheet" href="stylesheets/enquiry.css">
 		<script src="https://kit.fontawesome.com/b06605e970.js"></script>
@@ -40,6 +40,7 @@
 										<li><a href="#">Fee Collection</a></li>
 										<li><a href="#">Reports</a></li>
 									</ul>
+								</div>
 							</div>
 						</div>
 						<hr>
@@ -48,7 +49,7 @@
 					<div class="top-section">
 							<ul class="flex justify-space-between">
 							   <li>Enquiry List</li> 
-							   <li><a href="#"><i class="fas fa-plus"></i> Add Enquiry</a></li>
+							   <li><a href="actionadd"><i class="fas fa-plus"></i> Add Enquiry</a></li>
 							</ul>
 					</div>
 					<div>
@@ -93,11 +94,11 @@
 										<td><%out.print(enquiry.getMobileNo());%></td>
 										<td><%out.print(enquiry.getCourse());%></td>
 										<td><%out.print(enquiry.getAddress());%></td>
-										<td><%out.print(enquiry.getStatus());%></td>
+										<td style="background-color:<%out.print(enquiry.getColor());%>"><%out.print(enquiry.getStatus());%></td>
 									</tr>
 								<%}%>
 							</table>
-						</div>
+					</div>
 				</section>
 		</div>
 	 </body>
