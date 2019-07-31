@@ -24,7 +24,6 @@ public class UserDAO {
 			ps.setString(2,password);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()) {
-				System.out.println("Username:"+rs.getString("first_name"));
 				return (rs.getString("first_name")+" "+rs.getString("last_name"));
 			}
 			return null;
@@ -35,7 +34,6 @@ public class UserDAO {
 		ps.setString(1,email);
 		ResultSet rs=ps.executeQuery();
 		if(rs.next()) {
-			System.out.println("EmailExistWithName:"+rs.getString("first_name"));
 			return (rs.getString("first_name")+" "+rs.getString("last_name"));
 		}
 		return null;
@@ -47,7 +45,6 @@ public class UserDAO {
 		ps.setString(1,password);
 		ps.setString(2,email);
 		ps.executeUpdate();
-		System.out.println("Password Changed");
 	}
 //************************************************************************************************
 	

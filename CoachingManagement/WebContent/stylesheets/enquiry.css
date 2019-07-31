@@ -1,10 +1,10 @@
 .container{
-    width: 80%;
+    width: 90%;
     margin: 0 auto;
 }
 
 header .topbar a{
-    color: white;
+    color: white !important;
     letter-spacing: 1px;
 }
 
@@ -49,8 +49,8 @@ header .logo-nav .nav-bar ul li a{
     font-size: 20px;
 }
 
-header .logo-nav .nav-bar ul li a:hover{
-    color: #93C83F;
+a:hover{
+    color:#93C83F !important;
 }
 
  .search-box{
@@ -66,5 +66,19 @@ header .logo-nav .nav-bar ul li a:hover{
  }
 
 th, td {
+	text-align:center;
     padding: 5px;
     border: 1px solid black;
+} 
+
+th{
+	background-color: #a8a8a8;
+}   
+    
+a{
+    margin:0% 2px;
+    color: #1E3953;
+    transition: 0.3s;
+}    
+    
+    

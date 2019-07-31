@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.util.Iterator"%>
-    <%@ page import="com.sims.dto.Enquiry" %>
+    <%@ page import="com.sims.dto.enquiry.Enquiry" %>
 	<%@ page import="java.util.Map.Entry" %>
 	<%@ page import="java.util.Map" %>
 	<!DOCTYPE html>
@@ -22,7 +22,7 @@
 						<div class="topbar">
 							<div class="container flex justify-flex-end">
 								<div class="logout">
-									<a href="index.html">Logout</a>
+									<a href="logout">Logout</a>
 								</div>
 							</div>
 						</div>
@@ -63,24 +63,26 @@
 										<h3>Search By</h3> 
 										<select class = "categories">
 										   <option value = "0">Select Category</option>
-										   <option value = "1">BCA</option>
-										   <option value = "2">BTECH</option>
-										   <option value = "3">BBA</option>
-										   <option value = "4">BCOM</option>
+										   <option value = "1">EID</option>
+										   <option value = "2">Name</option>
+										   <option value = "3">Course</option>
+										   <option value = "4">Date</option>
 									   </select>
 									   <a href="#">Submit</a>
 								</div>
 						</div>
-							<table class="">
+							<table class="enquiry">
 								<tr>
 									<th>Date</th>
-									<th>Enquiry ID</th>
+									<th>EID</th>
 									<th>Name</th>
+									<th>Gender</th>
 									<th>Email</th>
 									<th>Mobile No.</th>
 									<th>Course</th>
 									<th>Address</th>
 									<th>Status</th>
+									<th>Action</th>
 								</tr>
 								<% 	Iterator<Entry<Integer, Enquiry>> it=(Iterator<Entry<Integer, Enquiry>>)request.getAttribute("enquiry"); 
 									while(it.hasNext()) {
@@ -90,11 +92,15 @@
 										<td><%out.print(enquiry.getDate());%></td>
 										<td><%out.print(enquiry.getEnquiryId());%></td>
 										<td><%String name=enquiry.getFirstName()+" "+enquiry.getLastName();out.print(name);%></td>
+										<td><%out.print(enquiry.getGender());%></td>
 										<td><%out.print(enquiry.getEmail());%></td>
 										<td><%out.print(enquiry.getMobileNo());%></td>
 										<td><%out.print(enquiry.getCourse());%></td>
 										<td><%out.print(enquiry.getAddress());%></td>
 										<td style="background-color:<%out.print(enquiry.getColor());%>"><%out.print(enquiry.getStatus());%></td>
+										<td><a href="delete?id=<%out.print(enquiry.getEnquiryId());%>"><i class="fas fa-trash"></i></a>
+											<a href="edit?id=<%out.print(enquiry.getEnquiryId());%>"><i class="far fa-edit"></i></a>
+										</td>
 									</tr>
 								<%}%>
 							</table>

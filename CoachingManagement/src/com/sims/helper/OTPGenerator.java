@@ -3,7 +3,7 @@ package com.sims.helper;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
-public class OTPGenerator {
+public interface OTPGenerator {
 	public static String generateOTP(){
 		StringBuilder generatedOTP = new StringBuilder();
         try {
@@ -15,7 +15,6 @@ public class OTPGenerator {
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-        System.out.println("OTP Generated:"+generatedOTP);
         return generatedOTP.toString();
 	}
 }
