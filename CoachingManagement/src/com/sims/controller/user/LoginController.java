@@ -26,7 +26,7 @@ public class LoginController extends HttpServlet {
 			if(name!=null) {
 				HttpSession session=request.getSession(true);
 				session.setAttribute("name",name);
-				response.sendRedirect("dashboard.jsp");
+				response.sendRedirect("dashboard");
 			}
 			else {
 				response.sendRedirect("index.html#wrong-credentials");

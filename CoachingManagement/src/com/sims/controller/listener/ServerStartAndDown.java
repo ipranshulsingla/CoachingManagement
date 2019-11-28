@@ -30,6 +30,8 @@ public class ServerStartAndDown implements ServletContextListener {
 			Cache.cacheGender();
 			Cache.cacheCourse();
 			Cache.cacheStatus();
+			Cache.cacheReferralBy();
+			Cache.cachePaymentType();
 		} catch (ClassNotFoundException | IllegalAccessException | IllegalArgumentException | InvocationTargetException
 				| NoSuchMethodException | SecurityException | InstantiationException | SQLException e) {
 			// TODO Auto-generated catch block

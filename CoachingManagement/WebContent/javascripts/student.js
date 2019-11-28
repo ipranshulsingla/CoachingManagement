@@ -1,18 +1,33 @@
 window.addEventListener("load",()=>{
-    installment=document.querySelector("#installment");
+	course=document.querySelector(".Course");
+	paymentType=document.querySelectorAll(".paymentType");
+	for(let i=0;i<paymentType.length;++i){
+		if(paymentType[i].value=="EMI"){
+			installment=paymentType[i];
+			break;
+		}
+	}
     calculator=document.querySelector("#calculator");
     regDate=document.querySelector("#reg-date");
     bdate=document.querySelector("#bdate");
     input=document.querySelectorAll("input");
     calcButton=document.querySelector("#calcButton");
     fees = document.querySelector("#fees");
+    fees.readOnly=true;
     numberOfinst = document.querySelector("#numberOfinst");
     flag=true;
     dateconfig();
     for(i=0;i<input.length;++i){
         input[i].addEventListener("change",active);
     }
+    course.addEventListener("change",updateFee)
 });
+
+function updateFee(){
+	slctd=course.selectedIndex;
+	fee=course[slctd].getAttribute("data-fee");
+	fees.value=fee;
+}
 
 function active(){
     if(installment.checked==true){
@@ -61,9 +76,12 @@ function calculate()
             input=document.createElement("input");
             var today=new Date();
             today.setDate(today.getDate()+(i*30));
-            var dueDate="#"+(i+1)+" Due date on: "+today.getDate()+"-"+(today.getMonth()+1)+"-"+today.getFullYear();
+            var month=((today.getMonth()+1)<10?'0'+(today.getMonth()+1):(today.getMonth()+1));
+            var date=today.getDate()<10?'0'+today.getDate():today.getDate();
+            var dueDate="#"+(i+1)+" Due date on: "+date+"/"+month+"/"+today.getFullYear();
             input.value=dueDate;
-            input.disabled=true;
+            input.readOnly=true;
+            input.style.display="block";
             input.classList.add("dueDate");
             calculator.appendChild(input);
             }

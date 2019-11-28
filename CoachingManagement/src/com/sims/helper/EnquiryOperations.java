@@ -33,5 +33,15 @@ public interface EnquiryOperations {
 		return it;
 	}
 	
+//	try {
+//		Enquiry e=EnquiryOperations.searchEnquiry(32);
+//		System.out.println(e.getFirstName());
+//	} catch (ClassNotFoundException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	} catch (SQLException e) {
+//		// TODO Auto-generated catch block
+//		e.printStackTrace();
+//	}
 	
 }

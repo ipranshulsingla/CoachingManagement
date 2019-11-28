@@ -1,17 +1,24 @@
 package com.sims.dto.generic;
 
 public class Generic {
-	private Character value;
+	private String value;
 	private String desc;
+	private String extras;
 	
-	public Character getValue() {
+	public String getExtras() {
+		return extras;
+	}
+	public void setExtras(String extras) {
+		this.extras = extras;
+	}
+	public String getValue() {
 		return value;
 	}
 	@Override
 	public String toString() {
 		return "Generic [value=" + value + ", desc=" + desc + "]";
 	}
-	public void setValue(Character value) {
+	public void setValue(String value) {
 		this.value = value;
 	}
 	public String getDesc() {

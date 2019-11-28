@@ -1,8 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ page import="javax.servlet.http.HttpSession"%>    
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<%
+	HttpSession s=request.getSession(false);
+	if(s==null || s.getAttribute("name")==null)
+		response.sendRedirect("index.html#login-box");
+	%>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -23,7 +29,7 @@
                     <div class="logo-nav">
                         <div class="container flex justify-space-between">
                             <div class="logo">
-                                <a href="#">SIMS</a>
+                                <a href="dashboard.jsp">SIMS</a>
                             </div>
                             <div class="nav-bar">
                                 <ul class="flex">
@@ -54,7 +60,7 @@
                                </li>
                                <li>
                                    <div class="icon">
-                                        <a href="student">
+                                        <a href="students">
                                                 <img class="icon-2" src="images/students_icon.png" alt=""> <br>
                                                 <span class="desc-2">Students</span>
                                         </a>

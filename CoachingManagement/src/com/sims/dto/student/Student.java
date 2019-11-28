@@ -1,21 +1,23 @@
 package com.sims.dto.student;
 
+import java.sql.SQLException;
 import java.time.LocalDate;
 
+import com.sims.dao.student.StudentDAO;
 import com.sims.dto.generic.Course;
 import com.sims.dto.generic.Generic;
 import com.sims.dto.payment.Payment;
 
 public class Student {
 	private LocalDate admissionDate,dob;
-	private Integer regId;
-	private String firstName,lastName,fathersName;
+	private Long regId;
+	private String name,fathersName;
 	private Generic gender;
 	private String mobNo,email;
 	private String address;
 	private Course course;
 	private Payment payment;
-	
+	private Generic referralBy;
 	public LocalDate getAdmissionDate() {
 		return admissionDate;
 	}
@@ -28,23 +30,17 @@ public class Student {
 	public void setDob(LocalDate dob) {
 		this.dob = dob;
 	}
-	public Integer getRegId() {
+	public Long getRegId() {
 		return regId;
 	}
-	public void setRegId(Integer regId) {
+	public void setRegId(Long regId) {
 		this.regId = regId;
 	}
-	public String getFirstName() {
-		return firstName;
+	public String getName() {
+		return name;
 	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
+	public void setName(String name) {
+		this.name = name;
 	}
 	public String getFathersName() {
 		return fathersName;
@@ -82,11 +78,42 @@ public class Student {
 	public void setCourse(Course course) {
 		this.course = course;
 	}
+	@Override
+	public String toString() {
+		return "Student [admissionDate=" + admissionDate + ", dob=" + dob + ", regId=" + regId + ", name=" + name
+				+ ", fathersName=" + fathersName + ", gender=" + gender + ", mobNo=" + mobNo + ", email=" + email
+				+ ", address=" + address + ", course=" + course + ", payment=" + payment + ", referralBy=" + referralBy
+				+ "]";
+	}
 	public Payment getPayment() {
 		return payment;
 	}
 	public void setPayment(Payment payment) {
 		this.payment = payment;
+	}
+	public Generic getReferralBy() {
+		return referralBy;
+	}
+	public void setReferralBy(Generic referralBy) {
+		this.referralBy = referralBy;
+	}
+	
+	public static long generateRegId() throws ClassNotFoundException, SQLException {
+		StudentDAO sd=new StudentDAO();
+		long lastRegId=sd.fetchLastRegId();
+		String regId=null;
+		LocalDate today=LocalDate.now();
+		String month=(today.getMonthValue()<10)?("0"+today.getMonthValue()):(""+today.getMonthValue());
+		String day=(today.getDayOfMonth()<10)?("0"+today.getDayOfMonth()):(""+today.getDayOfMonth());
+		regId=today.getYear()+month+day;
+		if((lastRegId+"").startsWith(regId)){
+			int temp=(int)(lastRegId%100)+1;
+			regId+=""+(temp<10?("0"+temp):temp);
+		}
+		else {
+			regId+="01";
+		}
+		return Long.parseLong(regId);
 	}
 	
 }

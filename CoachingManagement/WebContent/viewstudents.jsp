@@ -1,16 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
     <%@ page import="java.util.Iterator"%>
-    <%@ page import="com.sims.dto.enquiry.Enquiry" %>
+    <%@ page import="com.sims.dto.student.Student,com.sims.helper.StudentOperations" %>
+    <%@ page import="java.util.ArrayList" %>
 	<%@ page import="java.util.Map.Entry" %>
 	<%@ page import="java.util.Map" %>
+	<%@ page import="com.sims.dto.payment.*" %>
+	<%@ page import="java.time.LocalDate,java.time.Period" %>
+	<%@ page import="com.sims.utils.Cache" %>
 	<!DOCTYPE html>
 	<html lang="en">
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
-		<title>Enquiry</title>
+		<title>Students</title>
 		<link rel="stylesheet" href="stylesheets/main.css">
 		<link rel="stylesheet" href="stylesheets/enquiry.css">
 		<script src="https://kit.fontawesome.com/b06605e970.js"></script>
@@ -48,8 +52,8 @@
 				<section class="container">
 					<div class="top-section">
 							<ul class="flex justify-space-between">
-							   <li>Enquiry List</li> 
-							   <li><a href="actionadd"><i class="fas fa-plus"></i> Add Enquiry</a></li>
+							   <li>Students List</li> 
+							   <li><a href="addStudent"><i class="fas fa-plus"></i> Add Student</a></li>
 							</ul>
 					</div>
 					<div>
@@ -73,33 +77,30 @@
 						</div>
 							<table class="enquiry">
 								<tr>
-									<th>Date</th>
-									<th>EID</th>
+									<th>Reg.ID</th>
 									<th>Name</th>
 									<th>Gender</th>
-									<th>Email</th>
 									<th>Mobile No.</th>
 									<th>Course</th>
 									<th>Address</th>
-									<th>Status</th>
+									<th>Payment</th>
 									<th>Action</th>
 								</tr>
-								<% 	Iterator<Entry<Integer, Enquiry>> it=(Iterator<Entry<Integer, Enquiry>>)request.getAttribute("enquiry"); 
+								<% 	Iterator<Entry<Long,Student>> it=(Iterator<Entry<Long,Student>>)request.getAttribute("students"); 
 									while(it.hasNext()) {
-									Map.Entry<Integer, Enquiry> me=(Entry<Integer, Enquiry>)it.next();
-									Enquiry enquiry = (Enquiry)(me.getValue());
+									Map.Entry<Long,Student> me=(Entry<Long,Student>)it.next();
+									Student student = (Student)(me.getValue());
 								%>	<tr>
-										<td><%out.print(enquiry.getDate());%></td>
-										<td><%out.print(enquiry.getEnquiryId());%></td>
-										<td><%String name=enquiry.getFirstName()+" "+enquiry.getLastName();out.print(name);%></td>
-										<td><%out.print(enquiry.getGender());%></td>
-										<td><%out.print(enquiry.getEmail());%></td>
-										<td><%out.print(enquiry.getMobileNo());%></td>
-										<td><%out.print(enquiry.getCourse());%></td>
-										<td><%out.print(enquiry.getAddress());%></td>
-										<td style="background-color:<%out.print(enquiry.getColor());%>"><%out.print(enquiry.getStatus());%></td>
-										<td><a href="deleteEnquiry?id=<%out.print(enquiry.getEnquiryId());%>"><i class="fas fa-trash"></i></a>
-											<a href="editEnquiry?id=<%out.print(enquiry.getEnquiryId());%>"><i class="far fa-edit"></i></a>
+										<td><%=student.getRegId()%></td>
+										<td><%=student.getName()%></td>
+										<td><%=student.getGender().getValue()%></td>
+										<td><%=student.getMobNo()%></td>
+										<td><%=student.getCourse().getCourseName()%></td>
+										<td><%=student.getAddress()%></td>
+										<%String paymentStatus=StudentOperations.getPaymentStatus(student);%>	
+										<td><%=paymentStatus%></td>
+										<td><a href="delete?id=<%=student.getRegId()%>"><i class="fas fa-trash"></i></a>
+											<a href="edit?id=<%=student.getRegId()%>"><i class="far fa-edit"></i></a>
 										</td>
 									</tr>
 								<%}%>

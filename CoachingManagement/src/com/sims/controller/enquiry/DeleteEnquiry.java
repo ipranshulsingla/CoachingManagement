@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.sims.dao.EnquiryDAO;
 
-@WebServlet("/delete")
+@WebServlet("/deleteEnquiry")
 public class DeleteEnquiry extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -23,7 +23,8 @@ import com.sims.utils.Cache;
 public class AddEnquiryAction extends HttpServlet {
 	
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		System.out.println(Cache.course);
+		System.out.println(Cache.status);
 		Iterator<Course> itc=Cache.course.iterator();
 		Iterator<Status> its=Cache.status.iterator();
 		request.setAttribute("courses",itc);

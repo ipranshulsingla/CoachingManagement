@@ -19,7 +19,7 @@ import com.sims.dto.generic.Course;
 import com.sims.helper.EnquiryOperations;
 import com.sims.utils.Cache;
 
-@WebServlet("/edit")
+@WebServlet("/editEnquiry")
 public class EditController extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

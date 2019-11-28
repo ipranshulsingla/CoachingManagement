@@ -10,9 +10,9 @@ import java.time.LocalTime;
 import java.util.TreeMap;
 import java.util.TreeSet;
 
-import com.sims.dto.Courses;
-import com.sims.dto.Enquiry;
-import com.sims.dto.Status;
+import com.sims.dto.enquiry.Enquiry;
+import com.sims.dto.enquiry.Status;
+import com.sims.dto.generic.Course;
 import com.sims.utils.SQLConstants;
 
 public class EnquiryDAO {
@@ -31,10 +31,10 @@ public class EnquiryDAO {
 		rs=ps.executeQuery();
 		while(rs.next()) {
 			Enquiry obj=new Enquiry();
-			obj.setEnquiryId(Integer.parseInt(rs.getString("eid")));
+			obj.setEnquiryId(rs.getInt("eid"));
 			obj.setFirstName(rs.getString("first_name"));
 			obj.setLastName(rs.getString("last_name"));
-			obj.setAge(Integer.parseInt(rs.getString("age")));
+			obj.setAge(rs.getInt("age"));
 			obj.setEmail(rs.getString("email"));
 			obj.setMobileNo(rs.getString("mob_no"));
 			obj.setCourse(rs.getString("course_name"));
@@ -43,35 +43,10 @@ public class EnquiryDAO {
 			obj.setStatus(rs.getString("status_name"));
 			obj.setColor(rs.getString("color"));
 			obj.setDate(rs.getTimestamp("date").toLocalDateTime().toLocalDate());
+			obj.setGender(rs.getString("gender").charAt(0));
 			enquiry.put(obj.getEnquiryId(),obj);
 		}
 		return enquiry;
-	}
-	
-	public TreeSet<Courses> fetchCourses() throws SQLException{
-		ps=con.prepareStatement(SQLConstants.FETCH_COURSES);
-		rs=ps.executeQuery();
-		TreeSet<Courses> courses=new TreeSet<>();
-		while(rs.next()) {
-			Courses obj=new Courses();
-			obj.setCourseId(Integer.parseInt(rs.getString("id")));
-			obj.setCourseName(rs.getString("name"));
-			courses.add(obj);
-		}
-		return courses;
-	}
-	
-	public TreeSet<Status> fetchStatus() throws SQLException{
-		ps=con.prepareStatement(SQLConstants.FETCH_STATUS);
-		rs=ps.executeQuery();
-		TreeSet<Status> status=new TreeSet<>();
-		while(rs.next()) {
-			Status obj=new Status();
-			obj.setStatusId(Integer.parseInt(rs.getString("id")));
-			obj.setStatusName(rs.getString("status"));
-			status.add(obj);
-		}
-		return status;
 	}
 	
 	public int addEnquiry(Enquiry eq) throws SQLException {
@@ -79,14 +54,36 @@ public class EnquiryDAO {
 		ps.setString(1,eq.getFirstName());
 		ps.setString(2,eq.getLastName());
 		ps.setInt(3,eq.getAge());
-		ps.setInt(4,Integer.parseInt(eq.getMobileNo()));
+		ps.setString(4,eq.getMobileNo());
 		ps.setString(5,eq.getEmail());
 		ps.setString(6,eq.getAddress());
 		ps.setInt(7,Integer.parseInt(eq.getCourse()));
 		ps.setString(8,eq.getMessage());
 		ps.setTimestamp(9,Timestamp.valueOf(eq.getDate().atTime(LocalTime.MIDNIGHT)));
 		ps.setInt(10,Integer.parseInt(eq.getStatus()));
-		System.out.print(ps.executeUpdate());
-		return 0;
+		ps.setString(11,eq.getGender()+"");
+		int rowCount=ps.executeUpdate();
+		return rowCount;
 	}
+	
+	public int deleteEnquiry(Integer enquiryId) throws SQLException {
+		ps=con.prepareStatement(SQLConstants.DELETE_ENQUIRY);
+		ps.setInt(1,enquiryId);
+		int rowCount=ps.executeUpdate();
+		return rowCount;
+	}
+	
+	public Integer updateEnquiry(Enquiry eq) throws SQLException {
+		ps=con.prepareStatement(SQLConstants.UPDATE_ENQUIRY);
+		ps.setString(1,eq.getMobileNo());
+		ps.setString(2,eq.getEmail());
+		ps.setInt(3,Integer.parseInt(eq.getCourse()));
+		ps.setString(4,eq.getMessage());
+		ps.setInt(5,Integer.parseInt(eq.getStatus()));
+		ps.setString(6,eq.getAddress());
+		ps.setInt(7,eq.getEnquiryId());
+		int rowCount=ps.executeUpdate();
+		return rowCount;
+	}
+	
 }

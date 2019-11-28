@@ -105,3 +105,9 @@ textarea{
 .active{
     display: inline !important;
 }
+
+.dueDate{
+	display: block !important;
+}
+
+
