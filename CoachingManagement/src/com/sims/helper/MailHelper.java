@@ -44,6 +44,8 @@ public interface MailHelper {
 		            
 		            // Step-3 Send the Message
 		            Transport.send(message);
+
+		            System.out.println("OTP sent");
 		            return true;
 
 		        } catch (MessagingException e) {
