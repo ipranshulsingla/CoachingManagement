@@ -12,8 +12,8 @@ import javax.mail.internet.MimeMessage;
 
 public interface MailHelper {
 		public static  boolean sendOTP(String recipientEmail,String OTP) {
-			 final String username = "pranshulsingla@gmail.com";
-		     final String password = "Anjali123@";
+			 final String username = "";
+		     	 final String password = "";
 
 		        Properties prop = new Properties();
 				prop.put("mail.smtp.host", "smtp.gmail.com");
